@@ -35,7 +35,7 @@ function AnimatedGraph() {
   }, [])
 
   return (
-    <div className="h-full flex flex-col items-center justify-center gap-12 px-8">
+    <div className="h-full flex flex-col items-center justify-start pt-4 md:justify-center md:pt-0 gap-4 md:gap-12 px-4 md:px-8">
       <div style={{ width: "600px", maxWidth: "90%" }}>
         <input
           type="text"
@@ -327,7 +327,7 @@ export default function LandingPage() {
 
       <main className="flex-1 flex flex-col md:grid md:grid-cols-2">
         {/* Content Section */}
-        <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left px-6 pt-32 pb-8 md:px-16 lg:px-24 md:py-0 md:justify-center space-y-4 md:space-y-6">
+        <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left px-6 pt-32 pb-0 md:px-16 lg:px-24 md:py-0 md:justify-center space-y-4 md:space-y-6">
           <h1 className="text-2xl md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
             See how close you really are
           </h1>
@@ -417,7 +417,7 @@ export default function LandingPage() {
         </div>
 
         {/* Animated Graph Section */}
-        <div className="flex items-center justify-center relative py-12 md:py-0 md:flex-1 md:border-l" style={{
+        <div className="flex items-center justify-center relative py-0 md:py-0 md:flex-1 md:border-l" style={{
           backgroundColor: "oklch(0.98 0.008 145 / 0.3)",
           borderColor: "oklch(0.90 0.01 150 / 0.4)"
         }}>
