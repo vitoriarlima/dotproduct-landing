@@ -282,28 +282,40 @@ export default function LandingPage() {
 
       if (!response.ok) {
         if (response.status === 409) {
-          // Duplicate email - show as success with different message
+          // Duplicate email - show as success with different message, KEEP email so they see which one
           setSuccessMessage("You're already on the waitlist! <3")
           setIsSubmitted(true)
-          setEmail("") // Clear email immediately - they're done!
-          // Message stays permanently until page refresh
+          // Don't clear email - let them see which email is already registered
+          setTimeout(() => {
+            setIsSubmitted(false)
+            setSuccessMessage("")
+          }, 25000)
         } else {
           setErrorMessage(data.error || "Something went wrong. Please try again.")
-          // Keep email so they can fix and retry - error stays until page refresh
+          // Keep email so they can fix and retry
+          setTimeout(() => {
+            setErrorMessage("")
+          }, 25000)
         }
         setIsSubmitting(false)
         return
       }
 
-      // Success!
+      // Success! New email added
       setSuccessMessage("You're on the list. We'll let you know when we're ready! <3")
       setIsSubmitted(true)
-      setEmail("") // Clear email immediately - they're done!
-      // Message stays permanently until page refresh
+      setEmail("") // Clear email - they're done!
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setSuccessMessage("")
+      }, 25000)
     } catch (error) {
       console.error('Error:', error)
       setErrorMessage("Unable to join waitlist. Please try again.")
-      // Keep email so they can retry - error stays until page refresh
+      // Keep email so they can retry
+      setTimeout(() => {
+        setErrorMessage("")
+      }, 25000)
     } finally {
       setIsSubmitting(false)
     }
