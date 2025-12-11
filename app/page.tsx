@@ -316,7 +316,7 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative" style={{ backgroundColor: "oklch(1 0 0)" }}>
+    <div className="h-screen md:min-h-screen flex flex-col relative overflow-hidden md:overflow-visible" style={{ backgroundColor: "oklch(1 0 0)" }}>
       {/* Logo - fixed position */}
       <div className="absolute top-4 left-4 md:top-8 md:left-8 flex items-center gap-2 z-10">
         <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center" style={{ backgroundColor: "oklch(0.85 0.06 150 / 0.3)" }}>
@@ -325,21 +325,32 @@ export default function LandingPage() {
         <span className="text-base md:text-lg font-medium" style={{ color: "oklch(0.25 0.01 150)" }}>dotproduct</span>
       </div>
 
-      <main className="flex-1 flex flex-col md:grid md:grid-cols-2">
+      <main className="flex flex-col md:flex-1 md:grid md:grid-cols-2">
         {/* Content Section */}
-        <div className="flex flex-col justify-end items-center md:items-start text-center md:text-left px-6 pb-2 md:px-16 lg:px-24 md:py-0 md:justify-center space-y-1.5 md:space-y-6">
-          <h1 className="text-lg md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
+        <div className="flex flex-col justify-start pt-[calc(33vh-80px)] md:justify-center items-center md:items-start text-center md:text-left px-6 md:px-16 lg:px-24 md:py-0 space-y-5 md:space-y-6 h-[35vh] md:h-auto">
+          <h1 className="text-sm md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
             See how close you really are
           </h1>
-          <p className="text-[11px] md:text-lg lg:text-xl leading-snug md:leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
-            Technology should help us see how we're already all connected. We are already far apart enough. Find the shortest path to anyone on LinkedIn.
+          <div className="space-y-5 md:hidden">
+            <p className="text-[9px] leading-tight text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+              Technology should help us see how we're already all connected. We are already far apart enough.
+            </p>
+            <p className="text-[9px] leading-tight text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+              Find the shortest path to anyone on LinkedIn.
+            </p>
+          </div>
+          <p className="hidden md:block text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+            Technology should help us see how we're already all connected. We are already far apart enough.
+          </p>
+          <p className="hidden md:block text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+            Find the shortest path to anyone on LinkedIn.
           </p>
 
           {/* Waitlist Form */}
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-lg mt-5 md:mt-0">
             <form
               onSubmit={handleSubmit}
-              className="space-y-2 md:space-y-4"
+              className="space-y-1 md:space-y-4"
             >
               <div className="relative">
                 <input
@@ -350,7 +361,7 @@ export default function LandingPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isSubmitting}
-                  className="w-full h-10 md:h-14 px-3 md:px-6 pr-24 md:pr-36 text-xs md:text-base rounded-full transition-all focus:border-[oklch(0.75_0.06_150)]"
+                  className="w-full h-6 md:h-14 px-2.5 md:px-6 pr-16 md:pr-36 text-[9px] md:text-base rounded-full transition-all focus:border-[oklch(0.75_0.06_150)]"
                   style={{
                     border: "2px solid oklch(0.85 0.01 150)",
                     backgroundColor: "oklch(0.995 0.008 145 / 0.5)",
@@ -361,7 +372,7 @@ export default function LandingPage() {
                 <button
                   type="submit"
                   disabled={!email || isSubmitting}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 px-3 md:px-6 py-1.5 md:py-2.5 rounded-full hover:opacity-90 text-[10px] md:text-sm"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 px-2 md:px-6 py-0.5 md:py-2.5 rounded-full hover:opacity-90 text-[8px] md:text-sm"
                   style={{
                     backgroundColor: "oklch(0.65 0.08 150)",
                     color: "white",
@@ -408,19 +419,18 @@ export default function LandingPage() {
         </div>
 
         {/* Animated Graph Section */}
-        <div className="flex items-center justify-center relative py-1 md:py-0 md:flex-1 md:border-l" style={{
+        <div className="flex items-center justify-center md:items-center md:pt-0 relative md:flex-1 md:border-l h-[45vh] md:h-auto md:min-h-[140px]" style={{
           backgroundColor: "oklch(0.98 0.008 145 / 0.3)",
-          borderColor: "oklch(0.90 0.01 150 / 0.4)",
-          minHeight: "140px"
+          borderColor: "oklch(0.90 0.01 150 / 0.4)"
         }}>
-          <div className="scale-[0.45] md:scale-100">
+          <div className="scale-[0.25] md:scale-100">
             <AnimatedGraph />
           </div>
         </div>
       </main>
 
-      <footer className="border-t py-1.5 md:py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
-        <p className="text-center text-[9px] md:text-sm leading-tight" style={{ color: "oklch(0.50 0.01 150)" }}>
+      <footer className="border-t flex items-start pt-1 md:items-center md:py-4 justify-center h-[20vh] md:h-auto" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
+        <p className="text-center text-[7px] md:text-sm leading-tight" style={{ color: "oklch(0.50 0.01 150)" }}>
           built to remind you that you're closer than what you think
         </p>
       </footer>
