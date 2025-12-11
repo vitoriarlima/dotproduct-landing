@@ -327,16 +327,16 @@ export default function LandingPage() {
 
       <main className="flex-1 flex flex-col md:grid md:grid-cols-2">
         {/* Content Section */}
-        <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left px-6 pt-12 pb-3 md:px-16 lg:px-24 md:py-0 space-y-2 md:space-y-6">
-          <h1 className="text-xl md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
+        <div className="flex flex-col justify-end items-center md:items-start text-center md:text-left px-6 pb-2 md:px-16 lg:px-24 md:py-0 md:justify-center space-y-1.5 md:space-y-6">
+          <h1 className="text-lg md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
             See how close you really are
           </h1>
-          <p className="text-xs md:text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+          <p className="text-[11px] md:text-lg lg:text-xl leading-snug md:leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
             Technology should help us see how we're already all connected. We are already far apart enough. Find the shortest path to anyone on LinkedIn.
           </p>
 
           {/* Waitlist Form */}
-          <div className="w-full max-w-lg pt-1 md:pt-2">
+          <div className="w-full max-w-lg">
             <form
               onSubmit={handleSubmit}
               className="space-y-2 md:space-y-4"
@@ -408,19 +408,19 @@ export default function LandingPage() {
         </div>
 
         {/* Animated Graph Section */}
-        <div className="flex items-center justify-center relative py-3 md:py-0 md:flex-1 md:border-l" style={{
+        <div className="flex items-center justify-center relative py-1 md:py-0 md:flex-1 md:border-l" style={{
           backgroundColor: "oklch(0.98 0.008 145 / 0.3)",
           borderColor: "oklch(0.90 0.01 150 / 0.4)",
-          minHeight: "180px"
+          minHeight: "140px"
         }}>
-          <div className="scale-50 md:scale-100">
+          <div className="scale-[0.45] md:scale-100">
             <AnimatedGraph />
           </div>
         </div>
       </main>
 
-      <footer className="border-t py-2 md:py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
-        <p className="text-center text-[10px] md:text-sm" style={{ color: "oklch(0.50 0.01 150)" }}>
+      <footer className="border-t py-1.5 md:py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
+        <p className="text-center text-[9px] md:text-sm leading-tight" style={{ color: "oklch(0.50 0.01 150)" }}>
           built to remind you that you're closer than what you think
         </p>
       </footer>
