@@ -285,17 +285,11 @@ export default function LandingPage() {
           // Duplicate email - show as success with different message
           setSuccessMessage("You're already on the waitlist! <3")
           setIsSubmitted(true)
-          setTimeout(() => {
-            setIsSubmitted(false)
-            setSuccessMessage("")
-            setEmail("")
-          }, 15000)
+          setEmail("") // Clear email immediately - they're done!
+          // Message stays permanently until page refresh
         } else {
           setErrorMessage(data.error || "Something went wrong. Please try again.")
-          setTimeout(() => {
-            setErrorMessage("")
-            setEmail("")
-          }, 15000)
+          // Keep email so they can fix and retry - error stays until page refresh
         }
         setIsSubmitting(false)
         return
@@ -304,16 +298,12 @@ export default function LandingPage() {
       // Success!
       setSuccessMessage("You're on the list. We'll let you know when we're ready! <3")
       setIsSubmitted(true)
-
-      // Reset success message after 15 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-        setSuccessMessage("")
-        setEmail("")
-      }, 15000)
+      setEmail("") // Clear email immediately - they're done!
+      // Message stays permanently until page refresh
     } catch (error) {
       console.error('Error:', error)
       setErrorMessage("Unable to join waitlist. Please try again.")
+      // Keep email so they can retry - error stays until page refresh
     } finally {
       setIsSubmitting(false)
     }
