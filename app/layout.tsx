@@ -3,7 +3,20 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "dot",
-  description: "Find the shortest path to anyone on LinkedIn. Technology should help us see how we're already all connected.",
+  description: "Find the shortest path to anyone on LinkedIn.",
+  openGraph: {
+    title: "dot",
+    description: "Find the shortest path to anyone on LinkedIn.",
+    url: "https://dotproduct.one",
+    siteName: "dot",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "dot",
+    description: "Find the shortest path to anyone on LinkedIn.",
+  },
 };
 
 export default function RootLayout({

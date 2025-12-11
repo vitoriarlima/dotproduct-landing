@@ -327,22 +327,19 @@ export default function LandingPage() {
 
       <main className="flex-1 flex flex-col md:grid md:grid-cols-2">
         {/* Content Section */}
-        <div className="flex flex-col justify-center px-6 pt-16 pb-6 md:px-16 lg:px-24 md:py-0 space-y-3 md:space-y-6">
-          <h1 className="text-2xl md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
+        <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left px-6 pt-12 pb-3 md:px-16 lg:px-24 md:py-0 space-y-2 md:space-y-6">
+          <h1 className="text-xl md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
             See how close you really are
           </h1>
-          <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
-            Technology should help us see how we're already all connected. We are already far apart enough.
-          </p>
-          <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
-            Find the shortest path to anyone on LinkedIn.
+          <p className="text-xs md:text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+            Technology should help us see how we're already all connected. We are already far apart enough. Find the shortest path to anyone on LinkedIn.
           </p>
 
           {/* Waitlist Form */}
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-lg pt-1 md:pt-2">
             <form
               onSubmit={handleSubmit}
-              className="space-y-4"
+              className="space-y-2 md:space-y-4"
             >
               <div className="relative">
                 <input
@@ -353,7 +350,7 @@ export default function LandingPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isSubmitting}
-                  className="w-full h-12 md:h-14 px-4 md:px-6 pr-28 md:pr-36 text-sm md:text-base rounded-full transition-all focus:border-[oklch(0.75_0.06_150)]"
+                  className="w-full h-10 md:h-14 px-3 md:px-6 pr-24 md:pr-36 text-xs md:text-base rounded-full transition-all focus:border-[oklch(0.75_0.06_150)]"
                   style={{
                     border: "2px solid oklch(0.85 0.01 150)",
                     backgroundColor: "oklch(0.995 0.008 145 / 0.5)",
@@ -364,7 +361,7 @@ export default function LandingPage() {
                 <button
                   type="submit"
                   disabled={!email || isSubmitting}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:opacity-90 text-xs md:text-sm"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 px-3 md:px-6 py-1.5 md:py-2.5 rounded-full hover:opacity-90 text-[10px] md:text-sm"
                   style={{
                     backgroundColor: "oklch(0.65 0.08 150)",
                     color: "white",
@@ -375,19 +372,19 @@ export default function LandingPage() {
                     transition: "all 0.2s",
                   }}
                 >
-                  {isSubmitting ? "Joining..." : "Join waitlist"}
+                  {isSubmitting ? "Joining..." : "Join"}
                 </button>
               </div>
 
               {isSubmitted && (
                 <div
-                  className="animate-in fade-in p-3 md:p-4 rounded-2xl"
+                  className="animate-in fade-in p-2 md:p-4 rounded-2xl"
                   style={{
                     backgroundColor: "oklch(0.95 0.06 150 / 0.3)",
                     border: "1px solid oklch(0.85 0.06 150)",
                   }}
                 >
-                  <p className="text-xs md:text-sm" style={{ color: "oklch(0.30 0.08 150)" }}>
+                  <p className="text-[10px] md:text-sm" style={{ color: "oklch(0.30 0.08 150)" }}>
                     {successMessage}
                   </p>
                 </div>
@@ -395,13 +392,13 @@ export default function LandingPage() {
 
               {errorMessage && (
                 <div
-                  className="animate-in fade-in p-3 md:p-4 rounded-2xl"
+                  className="animate-in fade-in p-2 md:p-4 rounded-2xl"
                   style={{
                     backgroundColor: "oklch(0.95 0.08 10 / 0.2)",
                     border: "1px solid oklch(0.85 0.08 10)",
                   }}
                 >
-                  <p className="text-xs md:text-sm" style={{ color: "oklch(0.35 0.08 10)" }}>
+                  <p className="text-[10px] md:text-sm" style={{ color: "oklch(0.35 0.08 10)" }}>
                     {errorMessage}
                   </p>
                 </div>
@@ -411,19 +408,19 @@ export default function LandingPage() {
         </div>
 
         {/* Animated Graph Section */}
-        <div className="flex-1 md:border-l flex items-center justify-center relative py-6 md:py-0" style={{
+        <div className="flex items-center justify-center relative py-3 md:py-0 md:flex-1 md:border-l" style={{
           backgroundColor: "oklch(0.98 0.008 145 / 0.3)",
           borderColor: "oklch(0.90 0.01 150 / 0.4)",
-          minHeight: "250px"
+          minHeight: "180px"
         }}>
-          <div className="scale-75 md:scale-100">
+          <div className="scale-50 md:scale-100">
             <AnimatedGraph />
           </div>
         </div>
       </main>
 
-      <footer className="border-t py-3 md:py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
-        <p className="text-center text-xs md:text-sm" style={{ color: "oklch(0.50 0.01 150)" }}>
+      <footer className="border-t py-2 md:py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
+        <p className="text-center text-[10px] md:text-sm" style={{ color: "oklch(0.50 0.01 150)" }}>
           built to remind you that you're closer than what you think
         </p>
       </footer>
