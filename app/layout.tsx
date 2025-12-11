@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "dotproduct.one - See how close you really are",
+  title: "dot",
   description: "Find the shortest path to anyone on LinkedIn. Technology should help us see how we're already all connected.",
 };
 

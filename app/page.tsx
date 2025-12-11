@@ -316,29 +316,30 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden relative" style={{ backgroundColor: "oklch(1 0 0)" }}>
-      <main className="flex-1 grid md:grid-cols-2">
-        {/* Left side - Content */}
-        <div className="flex flex-col items-start justify-center px-12 md:px-16 lg:px-24 space-y-6 relative">
-          <div className="absolute top-8 left-8 flex items-center gap-2">
-            <div className="w-8 h-8 flex items-center justify-center" style={{ backgroundColor: "oklch(0.85 0.06 150 / 0.3)" }}>
-              <div className="w-1 h-1 rounded-full" style={{ backgroundColor: "oklch(0.65 0.08 150)" }} />
-            </div>
-            <span className="text-lg font-medium" style={{ color: "oklch(0.25 0.01 150)" }}>dotproduct</span>
-          </div>
+    <div className="min-h-screen flex flex-col relative" style={{ backgroundColor: "oklch(1 0 0)" }}>
+      {/* Logo - fixed position */}
+      <div className="absolute top-4 left-4 md:top-8 md:left-8 flex items-center gap-2 z-10">
+        <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center" style={{ backgroundColor: "oklch(0.85 0.06 150 / 0.3)" }}>
+          <div className="w-1 h-1 rounded-full" style={{ backgroundColor: "oklch(0.65 0.08 150)" }} />
+        </div>
+        <span className="text-base md:text-lg font-medium" style={{ color: "oklch(0.25 0.01 150)" }}>dotproduct</span>
+      </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
+      <main className="flex-1 flex flex-col md:grid md:grid-cols-2">
+        {/* Content Section */}
+        <div className="flex flex-col justify-center px-6 pt-16 pb-6 md:px-16 lg:px-24 md:py-0 space-y-3 md:space-y-6">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-medium leading-tight text-balance" style={{ color: "oklch(0.25 0.01 150)" }}>
             See how close you really are
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+          <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
             Technology should help us see how we're already all connected. We are already far apart enough.
           </p>
-          <p className="text-lg md:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
+          <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-pretty max-w-lg" style={{ color: "oklch(0.40 0.01 150)" }}>
             Find the shortest path to anyone on LinkedIn.
           </p>
 
           {/* Waitlist Form */}
-          <div className="w-full max-w-lg mt-8">
+          <div className="w-full max-w-lg">
             <form
               onSubmit={handleSubmit}
               className="space-y-4"
@@ -352,39 +353,27 @@ export default function LandingPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isSubmitting}
+                  className="w-full h-12 md:h-14 px-4 md:px-6 pr-28 md:pr-36 text-sm md:text-base rounded-full transition-all focus:border-[oklch(0.75_0.06_150)]"
                   style={{
-                    width: "100%",
-                    height: "56px",
-                    padding: "0 140px 0 24px",
-                    fontSize: "16px",
                     border: "2px solid oklch(0.85 0.01 150)",
-                    borderRadius: "28px",
                     backgroundColor: "oklch(0.995 0.008 145 / 0.5)",
                     color: "oklch(0.25 0.01 150)",
                     outline: "none",
                   }}
-                  className="transition-all focus:border-[oklch(0.75_0.06_150)]"
                 />
                 <button
                   type="submit"
                   disabled={!email || isSubmitting}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:opacity-90 text-xs md:text-sm"
                   style={{
-                    position: "absolute",
-                    right: "4px",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    padding: "12px 24px",
-                    borderRadius: "24px",
                     backgroundColor: "oklch(0.65 0.08 150)",
                     color: "white",
-                    fontSize: "15px",
                     fontWeight: 500,
                     border: "none",
                     cursor: email && !isSubmitting ? "pointer" : "not-allowed",
                     opacity: email && !isSubmitting ? 1 : 0.5,
                     transition: "all 0.2s",
                   }}
-                  className="hover:opacity-90"
                 >
                   {isSubmitting ? "Joining..." : "Join waitlist"}
                 </button>
@@ -392,15 +381,13 @@ export default function LandingPage() {
 
               {isSubmitted && (
                 <div
-                  className="animate-in fade-in"
+                  className="animate-in fade-in p-3 md:p-4 rounded-2xl"
                   style={{
-                    padding: "16px 20px",
-                    borderRadius: "16px",
                     backgroundColor: "oklch(0.95 0.06 150 / 0.3)",
                     border: "1px solid oklch(0.85 0.06 150)",
                   }}
                 >
-                  <p style={{ color: "oklch(0.30 0.08 150)", fontSize: "15px" }}>
+                  <p className="text-xs md:text-sm" style={{ color: "oklch(0.30 0.08 150)" }}>
                     {successMessage}
                   </p>
                 </div>
@@ -408,15 +395,13 @@ export default function LandingPage() {
 
               {errorMessage && (
                 <div
-                  className="animate-in fade-in"
+                  className="animate-in fade-in p-3 md:p-4 rounded-2xl"
                   style={{
-                    padding: "16px 20px",
-                    borderRadius: "16px",
                     backgroundColor: "oklch(0.95 0.08 10 / 0.2)",
                     border: "1px solid oklch(0.85 0.08 10)",
                   }}
                 >
-                  <p style={{ color: "oklch(0.35 0.08 10)", fontSize: "15px" }}>
+                  <p className="text-xs md:text-sm" style={{ color: "oklch(0.35 0.08 10)" }}>
                     {errorMessage}
                   </p>
                 </div>
@@ -425,17 +410,20 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Right side - Animated Graph */}
-        <div className="border-l flex items-center justify-center relative" style={{
+        {/* Animated Graph Section */}
+        <div className="flex-1 md:border-l flex items-center justify-center relative py-6 md:py-0" style={{
           backgroundColor: "oklch(0.98 0.008 145 / 0.3)",
-          borderColor: "oklch(0.90 0.01 150 / 0.4)"
+          borderColor: "oklch(0.90 0.01 150 / 0.4)",
+          minHeight: "250px"
         }}>
-          <AnimatedGraph />
+          <div className="scale-75 md:scale-100">
+            <AnimatedGraph />
+          </div>
         </div>
       </main>
 
-      <footer className="border-t py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
-        <p className="text-center text-sm" style={{ color: "oklch(0.50 0.01 150)" }}>
+      <footer className="border-t py-3 md:py-4" style={{ borderColor: "oklch(0.90 0.01 150 / 0.4)" }}>
+        <p className="text-center text-xs md:text-sm" style={{ color: "oklch(0.50 0.01 150)" }}>
           built to remind you that you're closer than what you think
         </p>
       </footer>
