@@ -261,11 +261,13 @@ export default function LandingPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState("")
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     setErrorMessage("")
+    setSuccessMessage("")
 
     try {
       const response = await fetch('/api/waitlist', {
@@ -280,7 +282,14 @@ export default function LandingPage() {
 
       if (!response.ok) {
         if (response.status === 409) {
-          setErrorMessage("You're already on the waitlist!")
+          // Duplicate email - show as success with different message
+          setSuccessMessage("You're already on the waitlist! <3")
+          setIsSubmitted(true)
+          setEmail("")
+          setTimeout(() => {
+            setIsSubmitted(false)
+            setSuccessMessage("")
+          }, 5000)
         } else {
           setErrorMessage(data.error || "Something went wrong. Please try again.")
         }
@@ -289,12 +298,14 @@ export default function LandingPage() {
       }
 
       // Success!
+      setSuccessMessage("You're on the list. We'll let you know when we're ready! <3")
       setIsSubmitted(true)
       setEmail("")
 
       // Reset success message after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false)
+        setSuccessMessage("")
       }, 5000)
     } catch (error) {
       console.error('Error:', error)
@@ -390,7 +401,7 @@ export default function LandingPage() {
                   }}
                 >
                   <p style={{ color: "oklch(0.30 0.08 150)", fontSize: "15px" }}>
-                    You're on the list. We'll let you know when we're ready! &lt;3
+                    {successMessage}
                   </p>
                 </div>
               )}
